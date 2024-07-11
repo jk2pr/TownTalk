@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - main  # Replace with your main branch name
-
+  pull_request:
+    branches:
+      - main  # Replace with your main branch name
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,7 +19,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
-          java-version: '11'
+          java-version: '17'
 
       - name: Build with Gradle
         run: ./gradlew clean build
