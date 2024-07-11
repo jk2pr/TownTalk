@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - main  # Replace with your main branch name
-
+  pull_request:
+    branches:
+      - main  # Replace with your main branch name
 jobs:
   build:
     runs-on: ubuntu-latest
