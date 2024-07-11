@@ -19,7 +19,7 @@ RUN git clone https://github.com/jk2pr/TownTalk.git .
 RUN ./gradlew clean build
 
 # Stage 2: Create the final Docker image for runtime
-FROM adoptopenjdk:17-jdk-hotspot
+FROM openjdk:17-alpine
 
 # Set the working directory inside the container
 WORKDIR /app
