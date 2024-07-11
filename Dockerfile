@@ -4,7 +4,7 @@ FROM adoptopenjdk:11-jre-hotspot
 # Set the working directory inside the container
 WORKDIR /app
 
-/gradlew clean build
+./gradlew clean build
 # Copy the packaged Spring Boot application JAR file into the container
 
 COPY build/libs/*.jar app.jar
