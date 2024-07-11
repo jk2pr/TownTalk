@@ -1,6 +1,6 @@
 # Use AdoptOpenJDK OpenJDK 11 base image
 # Stage 1: Build the application
-FROM adoptopenjdk:11-jdk-hotspot AS build
+FROM openjdk:17-jdk-slim AS build
 
 # Install necessary tools (Git and Gradle in this example)
 RUN apt-get update && \
