@@ -1,9 +1,23 @@
 package com.hoppers.towntalk.beans
 
+import jakarta.annotation.Generated
+import jakarta.persistence.Entity
+import jakarta.persistence.Id
+import jakarta.persistence.Table
+import java.util.*
+
+
+@Entity
+@Table(name = "app_user")
 data class User(
-    val uid: String,
+    @Id
+    @Generated
+    val id: UUID,
     val email: String,
-    val name: String,
-    val bio: String,
-    val profileImageUrl: String? = null
+    val password: String,
+    val role: Role
 )
+
+enum class Role {
+    USER, ADMIN
+}
