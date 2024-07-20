@@ -17,7 +17,6 @@ class UserController(
     @PostMapping
     fun create(@RequestBody userRequest: UserRequest): UserResponse {
         val createdUser = userService.createUser(userRequest.toModel())
-
         return createdUser.toResponse()
     }
 
@@ -28,14 +27,14 @@ class UserController(
 
     @GetMapping("/{uuid}")
     fun findByUUID(@PathVariable uuid: UUID): UserResponse {
-      val u =   userService.findByUUID(uuid)
-            ?: throw RuntimeException( "User not found.")
+        val u = userService.findByUUID(uuid)
+            ?: throw RuntimeException("User not found.")
         return u.toResponse()
     }
 
     @DeleteMapping("/{uuid}")
     fun deleteByUUID(@PathVariable uuid: UUID) {
-         userService.deleteByUUID(uuid)
+        userService.deleteByUUID(uuid)
 
 
     }
