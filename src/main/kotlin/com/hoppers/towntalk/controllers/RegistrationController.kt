@@ -5,6 +5,8 @@ import com.hoppers.towntalk.beans.User
 import com.hoppers.towntalk.services.UserService
 import com.hoppers.towntalk.user.UserRequest
 import com.hoppers.towntalk.user.UserResponse
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
@@ -15,12 +17,12 @@ class UserController(
 ) {
 
     @PostMapping
-    fun create(@RequestBody userRequest: UserRequest): String {
+    fun create(@RequestBody userRequest: UserRequest):ResponseEntity<Map<String, String>> {
         return runCatching {
             userService.createUser(userRequest.toModel())
-            "Created successfully"
+            ResponseEntity.status(HttpStatus.CREATED).body(mapOf("message" to "Created successfully"))
         }.getOrElse {
-            "Error creating User"
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(mapOf("message" to "Error creating User"))
         }
     }
 
