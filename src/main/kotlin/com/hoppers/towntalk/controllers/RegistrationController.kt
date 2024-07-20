@@ -15,9 +15,13 @@ class UserController(
 ) {
 
     @PostMapping
-    fun create(@RequestBody userRequest: UserRequest): UserResponse {
-        val createdUser = userService.createUser(userRequest.toModel())
-        return createdUser.toResponse()
+    fun create(@RequestBody userRequest: UserRequest): String {
+        return runCatching {
+            userService.createUser(userRequest.toModel())
+            "Created successfully"
+        }.getOrElse {
+            "Error creating User"
+        }
     }
 
     @GetMapping
