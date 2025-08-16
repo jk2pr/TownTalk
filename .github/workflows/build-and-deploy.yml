@@ -24,9 +24,12 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew clean build
         
-      - name: Upload JAR artifact
-        uses: actions/upload-artifact@v4
+      - uses: mr-smithers-excellent/docker-build-push@v6
+        name: Build & push Docker image
         with:
-          name: TownTalk-App
-          path: build/libs/TownTalk-0.0.1-SNAPSHOT.jar  # Adjust the path based on your Gradle build output
-
+          image: jk2pr/towntalk
+          tags: v1
+          registry: docker.io
+          dockerfile: Dockerfile
+          username: ${{ secrets.DOCKER_USER_NAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}

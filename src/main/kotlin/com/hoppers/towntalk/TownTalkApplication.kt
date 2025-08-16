@@ -8,4 +8,5 @@ class TownTalkApplication
 
 fun main(args: Array<String>) {
 	runApplication<TownTalkApplication>(*args)
+    println("TownTalk Server Start!")
 }
