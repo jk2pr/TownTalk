@@ -1,4 +1,5 @@
 FROM openjdk:21
+WORKDIR /app
+COPY build/libs/TownTalk.jar app.jar
 EXPOSE 8080
-ADD target/TownTalk.jar TownTalk.jar
-ENTRYPOINT ["java","-jar","/towntalk.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
